@@ -6,19 +6,21 @@ public class MyPool:MonoBehaviour
 {
     public GameObject ObjectPrefab;
     private ObjectPool<GameObject> _myPool;
+    private Vector3 _position;
     private void Awake()
     {
-        _myPool = new ObjectPool<GameObject>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPooledItem, true, 10, 1000);
+        _myPool = new ObjectPool<GameObject>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPooledItem, true, 100, 1000);
     }
 
     private GameObject CreatePooledItem()
     {
-        GameObject go = Instantiate(ObjectPrefab);
+        GameObject go = Instantiate(ObjectPrefab, _position, Quaternion.identity);
         return go;
     }
 
     private void OnTakeFromPool(GameObject go)
     {
+        go.transform.position = _position;
         go.SetActive(true);
     }
 
@@ -32,8 +34,9 @@ public class MyPool:MonoBehaviour
         Destroy(go);
     }
 
-    public void SpawnObject()
+    public void SpawnObject(Vector3 pos)
     {
+        _position = pos;
         GameObject obj = _myPool.Get();
     }
 

@@ -1,42 +1,46 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private float EnemiesPerSecond = 1;
-    public bool UseObjectPool = false;
-    private MyPool _myPool;
-    
+    [SerializeField] private PlayerPositionSO _playerPositionSO;
+    [SerializeField] private float _minSpawnRadius;
+    [SerializeField] private float _maxSpawnRadius;
+    [SerializeField] private MyPool _myPool;
+
 
     private float LastSpawnTime;
 
-    private void Awake()
-    {
-        _myPool = GetComponent<MyPool>();
-    }
-
     private void Update()
     {
-        float delay = 1f/EnemiesPerSecond;
+        float delay = 1f / EnemiesPerSecond;
         if (LastSpawnTime + delay < Time.time)
         {
             int enemiesToSpawnInFrame = Mathf.CeilToInt(Time.deltaTime / delay);
             while (enemiesToSpawnInFrame > 0)
             {
-                if (!UseObjectPool)
-                {
-                    
-                }
-                else
-                {
-                    _myPool.SpawnObject();
-                    Debug.Log("SpawnedObject");
-                }
-                
+                _myPool.SpawnObject(CalculatePosition(_playerPositionSO.Value));
+
                 enemiesToSpawnInFrame--;
             }
-            
+
             LastSpawnTime = Time.time;
         }
+    }
+
+    private Vector3 CalculatePosition(Vector3 startPos)
+    {
+        float randomDistance = Random.Range(_minSpawnRadius, _maxSpawnRadius);
+
+        float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+
+        float x = Mathf.Cos(randomAngle) * randomDistance;
+        float z = Mathf.Sin(randomAngle) * randomDistance;
+        
+        Vector3 pos = new Vector3(x, 0, z) + startPos;
+        
+        return pos;
     }
 }
