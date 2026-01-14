@@ -1,46 +1,49 @@
-using System;
+using _Project.Scripts.Scriptables;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Spawner : MonoBehaviour
+namespace _Project.Scripts
 {
-    [SerializeField] private float EnemiesPerSecond = 1;
-    [SerializeField] private PlayerPositionSO _playerPositionSO;
-    [SerializeField] private float _minSpawnRadius;
-    [SerializeField] private float _maxSpawnRadius;
-    [SerializeField] private MyPool _myPool;
-
-
-    private float LastSpawnTime;
-
-    private void Update()
+    public class Spawner : MonoBehaviour
     {
-        float delay = 1f / EnemiesPerSecond;
-        if (LastSpawnTime + delay < Time.time)
+        [SerializeField] private float EnemiesPerSecond = 1;
+        [SerializeField] private PlayerPositionSO _playerPositionSO;
+        [SerializeField] private float _minSpawnRadius;
+        [SerializeField] private float _maxSpawnRadius;
+        [SerializeField] private MyPool _myPool;
+
+
+        private float LastSpawnTime;
+
+        private void Update()
         {
-            int enemiesToSpawnInFrame = Mathf.CeilToInt(Time.deltaTime / delay);
-            while (enemiesToSpawnInFrame > 0)
+            float delay = 1f / EnemiesPerSecond;
+            if (LastSpawnTime + delay < Time.time)
             {
-                _myPool.SpawnObject(CalculatePosition(_playerPositionSO.Value));
+                int enemiesToSpawnInFrame = Mathf.CeilToInt(Time.deltaTime / delay);
+                while (enemiesToSpawnInFrame > 0)
+                {
+                    _myPool.SpawnObject(CalculatePosition(_playerPositionSO.Value));
 
-                enemiesToSpawnInFrame--;
+                    enemiesToSpawnInFrame--;
+                }
+
+                LastSpawnTime = Time.time;
             }
-
-            LastSpawnTime = Time.time;
         }
-    }
 
-    private Vector3 CalculatePosition(Vector3 startPos)
-    {
-        float randomDistance = Random.Range(_minSpawnRadius, _maxSpawnRadius);
+        private Vector3 CalculatePosition(Vector3 startPos)
+        {
+            float randomDistance = Random.Range(_minSpawnRadius, _maxSpawnRadius);
 
-        float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+            float randomAngle = Random.Range(0f, Mathf.PI * 2f);
 
-        float x = Mathf.Cos(randomAngle) * randomDistance;
-        float z = Mathf.Sin(randomAngle) * randomDistance;
+            float x = Mathf.Cos(randomAngle) * randomDistance;
+            float z = Mathf.Sin(randomAngle) * randomDistance;
         
-        Vector3 pos = new Vector3(x, 0, z) + startPos;
+            Vector3 pos = new Vector3(x, 0, z) + startPos;
         
-        return pos;
+            return pos;
+        }
     }
 }

@@ -1,10 +1,13 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "EnemyScriptableObject", menuName = "Scriptable Objects/EnemyScriptableObject")]
-public class EnemyData : ScriptableObject
+namespace _Project.Scripts.Scriptables
 {
-    public string EnemyName;
-    public int MaxHealth;
-    public int Damage;
-    public int Speed;
+    [CreateAssetMenu(fileName = "EnemyScriptableObject", menuName = "Scriptable Objects/EnemyScriptableObject")]
+    public class EnemyData : ScriptableObject
+    {
+        public string EnemyName;
+        public int MaxHealth;
+        public int Damage;
+        public int Speed;
+    }
 }

@@ -1,7 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerPositionSO", menuName = "Scriptable Objects/PlayerPositionSO")]
-public class PlayerPositionSO : ScriptableObject
+namespace _Project.Scripts.Scriptables
 {
-    public Vector3 Value;
+    [CreateAssetMenu(fileName = "PlayerPositionSO", menuName = "Scriptable Objects/PlayerPositionSO")]
+    public class PlayerPositionSO : ScriptableObject
+    {
+        public Vector3 Value;
+    }
 }

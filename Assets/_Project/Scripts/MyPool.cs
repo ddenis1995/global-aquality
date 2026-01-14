@@ -1,47 +1,56 @@
-using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class MyPool:MonoBehaviour
+namespace _Project.Scripts
 {
-    public GameObject ObjectPrefab;
-    private ObjectPool<GameObject> _myPool;
-    private Vector3 _position;
-    private void Awake()
+    public class MyPool:MonoBehaviour
     {
-        _myPool = new ObjectPool<GameObject>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPooledItem, true, 100, 1000);
-    }
+        public PoolableItem Item;
+        private ObjectPool<PoolableItem> _myPool;
+        private Vector3 _position;
+        private void Awake()
+        {
+            _myPool = new ObjectPool<PoolableItem>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPooledItem, true, 100, 1000);
+        }
 
-    private GameObject CreatePooledItem()
-    {
-        GameObject go = Instantiate(ObjectPrefab, _position, Quaternion.identity);
-        return go;
-    }
+        private PoolableItem CreatePooledItem()
+        {
+            PoolableItem item = Instantiate(Item, _position, Quaternion.identity);
+            item.Init(KillItem);
+            return item;
+        }
 
-    private void OnTakeFromPool(GameObject go)
-    {
-        go.transform.position = _position;
-        go.SetActive(true);
-    }
+        private void OnTakeFromPool(PoolableItem item)
+        {
+            item.transform.position = _position;
+            item.gameObject.SetActive(true);
+        }
 
-    private void OnReturnedToPool(GameObject go)
-    {
-        go.SetActive(false);
-    }
+        private void OnReturnedToPool(PoolableItem item)
+        {
+            item.gameObject.SetActive(false);
+        }
 
-    private void OnDestroyPooledItem(GameObject go)
-    {
-        Destroy(go);
-    }
+        private void OnDestroyPooledItem(PoolableItem item)
+        {
+            Destroy(item);
+        }
 
-    public void SpawnObject(Vector3 pos)
-    {
-        _position = pos;
-        GameObject obj = _myPool.Get();
-    }
+        public void SpawnObject(Vector3 pos)
+        {
+            _position = pos;
+            PoolableItem obj = _myPool.Get();
+        }
 
-    public void ReleaseObject(GameObject obj)
-    {
-        _myPool.Release(obj);
+        public void ReleaseObject(PoolableItem item)
+        {
+            _myPool.Release(item);
+        }
+
+        private void KillItem(PoolableItem item)
+        {
+            _myPool.Release(item);
+        }
     }
 }
