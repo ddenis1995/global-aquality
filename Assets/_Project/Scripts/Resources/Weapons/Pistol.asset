@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 880639f1013cd29448b7578100dadac4, type: 3}
-  m_Name: PlayerPositionSO
+  m_Script: {fileID: 11500000, guid: 1b95cf8d8f2b4f41a90572ae721c23e5, type: 3}
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  Value: {x: 0, y: 0, z: 0}
+  RateOfFire: 0

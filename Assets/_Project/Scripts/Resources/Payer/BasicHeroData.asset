@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2652cf14170750c438185b6098498e07, type: 3}
-  m_Name: BasicMob
+  m_Name: BasicHeroData
   m_EditorClassIdentifier: 
-  Name: BasicMob
-  MaxHealth: 10
+  Name: BasicHero
+  MaxHealth: 100
   DamageBase: 0
-  Speed: 1
+  Speed: 5
   Weapons:
-  - {fileID: 11400000, guid: e966461b0f0f8bb458f9e125f5b57717, type: 2}
+  - {fileID: 11400000, guid: 8704f97a124430b49a2927d4fa09085d, type: 2}

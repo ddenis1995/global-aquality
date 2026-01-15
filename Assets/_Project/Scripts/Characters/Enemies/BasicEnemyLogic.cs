@@ -7,13 +7,12 @@ namespace _Project.Scripts.Characters.Enemies
     [RequireComponent(typeof(CharacterController))]
     public class BasicEnemyScript : MonoBehaviour, IDamagable, IAttacker
     {
-        public EnemyData Data;
-        public PlayerPositionSO TargetPositionSO;
-        public PoolableItem Item;
+        [SerializeField] private CharacterData Data;
+        [SerializeField] private PlayerPositionSO TargetPositionSO;
+        [SerializeField] private PoolableItem Item;
+        [SerializeField] private CharacterController _controller;
 
         private Vector3 _playerDirection;
-        private CharacterController _controller;
-
         private float _speed;
         private float _damage;
         private int _maxHealth;
@@ -21,15 +20,15 @@ namespace _Project.Scripts.Characters.Enemies
 
         private void Start()
         {
-            _controller = GetComponent<CharacterController>();
+            _speed = Data.Speed;
+            _damage = Data.DamageBase;
+            _maxHealth = Data.MaxHealth;
+            _health = _maxHealth;
         }
 
         private void Update()
         {
-            if (_controller != null)
-            {
-                _controller.Move(_playerDirection * _speed * Time.deltaTime);
-            }
+            _controller.Move(_playerDirection * _speed * Time.deltaTime);
         }
 
         private void FixedUpdate()

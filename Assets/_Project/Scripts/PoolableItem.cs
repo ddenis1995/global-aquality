@@ -11,9 +11,6 @@ namespace _Project.Scripts
         {
             _killAction = killAction;
         }
-        
-        // тут надо вызвать _killAction(this) в каком-то методе, может быть virtual использовать
-        // или просто вот так, я хз: 
 
         public void Kill()
         {

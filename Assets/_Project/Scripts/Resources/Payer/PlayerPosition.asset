@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2652cf14170750c438185b6098498e07, type: 3}
-  m_Name: BasicMob
+  m_Script: {fileID: 11500000, guid: 880639f1013cd29448b7578100dadac4, type: 3}
+  m_Name: PlayerPosition
   m_EditorClassIdentifier: 
-  Name: BasicMob
-  MaxHealth: 10
-  DamageBase: 0
-  Speed: 1
-  Weapons:
-  - {fileID: 11400000, guid: e966461b0f0f8bb458f9e125f5b57717, type: 2}
+  Value: {x: 0, y: 0, z: 0}
