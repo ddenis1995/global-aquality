@@ -18,21 +18,14 @@ namespace _Project.Scripts.Characters.Enemies
         private float _damage;
         private float _attackRange;
         private float _attackCooldown;
-        private int _maxHealth;
-        private int _health;
+        private float _maxHealth;
+        private float _health;
 
         private float nextAttackTime = 0f; // Key: absolute time when next attack allowed
 
-        private void Start()
+        private void OnEnable()
         {
-            _speed = Data.Speed;
-
-            _damage = Data.DamageBase;
-            _attackRange = Data.Range;
-            _attackCooldown = Data.Cooldown;
-
-            _maxHealth = Data.MaxHealth;
-            _health = _maxHealth;
+            Reset();
         }
 
         private void Update()
@@ -49,16 +42,16 @@ namespace _Project.Scripts.Characters.Enemies
             }
         }
 
-        private bool PlayerInRange()
-        {
-            return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
-        }
-
         private void FixedUpdate()
         {
             CalculateDirection();
         }
-
+        
+        private bool PlayerInRange()
+        {
+            return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
+        }
+        
         private void CalculateDirection()
         {
             _playerDirection = TargetPositionSO.Value - transform.position;
@@ -66,13 +59,16 @@ namespace _Project.Scripts.Characters.Enemies
             _playerDirection.y = 0;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             if (_maxHealth > 0)
             {
+                Debug.Log($"I take {damage} points of damage");
+                // Hit FX/anim...
                 _health -= damage;
                 if (_health <= 0)
                 {
+                    // Death FX/anim...
                     _health = 0;
                     Item.Kill();
                 }
@@ -84,6 +80,24 @@ namespace _Project.Scripts.Characters.Enemies
             // Hit FX/anim...
             PlayerHealth.Instance?.TakeDamage(_damage);
             //nextAttackTime = Time.time + attackCooldown;
+        }
+
+        public float GetHealth()
+        {
+            return _health;
+        }
+
+        public void Reset()
+        {
+            _speed = Data.Speed;
+
+            _damage = Data.DamageBase;
+            _attackRange = Data.Range;
+            _attackCooldown = Data.Cooldown;
+
+            _maxHealth = Data.MaxHealth;
+            _health = _maxHealth;
+            
         }
     }
 }

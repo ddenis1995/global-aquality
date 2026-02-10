@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b95cf8d8f2b4f41a90572ae721c23e5, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  RateOfFire: 0
+  Name: Pistol
+  RateOfFire: 0.5
+  ProjectilePrefab: {fileID: 7187772584848369284, guid: e1a632aa7b303f645b3c804cc092f848, type: 3}
+  Damage: 4
+  Range: 3
+  Speed: 3
+  TargetingType: 0

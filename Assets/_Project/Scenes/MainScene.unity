@@ -752,6 +752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622d7740c1c59cf45b634926965b9e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _poolDefaultSize: 100
+  _poolMaxSize: 1000
   Item: {fileID: 4823969595520987026, guid: 5e3eab07012526c42bf28a2e48b4001d, type: 3}
 --- !u!4 &1050946621
 Transform:
@@ -782,8 +784,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemiesPerSecond: 1
   _playerPositionSO: {fileID: 11400000, guid: 029e1a05b4d5cf14c9d6c79c7d35e739, type: 2}
-  _minSpawnRadius: 3
-  _maxSpawnRadius: 5
+  _minSpawnRadius: 5
+  _maxSpawnRadius: 10
   _myPool: {fileID: 1050946620}
 --- !u!1 &1051329112
 GameObject:

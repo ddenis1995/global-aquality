@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace _Project.Scripts.Characters.PlayableCharacters
 {
-    public class PlayerLogic : MonoBehaviour, IDamagable, IAttacker
+    public class PlayerLogic : MonoBehaviour
     {
         [SerializeField] private CharacterData _characterStatsSO;
         [SerializeField] private PlayerHealth _playerHealth;
         [SerializeField] private PlayerController _playerController;
+        [SerializeField] private PlayerWeaponManager _playerWeaponManager;
 
-        private int _speed;
-        private int _damageBase;
-        private int _maxHealth;
-        private WeaponSO[] _weapons;
+        private float _speed;
+        private float _damageBase;
+        private float _maxHealth;
         
         private IDamagable _target;
         private int _maxRange;
@@ -23,32 +23,10 @@ namespace _Project.Scripts.Characters.PlayableCharacters
         {
             _damageBase = _characterStatsSO.DamageBase;
             _maxHealth = _characterStatsSO.MaxHealth;
-            _weapons = _characterStatsSO.Weapons;
 
             _playerController.MovementSpeed = _characterStatsSO.Speed;
             _playerHealth.ResetHealth(_characterStatsSO.MaxHealth);
-        }
-
-
-        private void Update()
-        {
-            Attack();
-        }
-
-        private void FindTarget()
-        {
-            
-        }
-
-        public void TakeDamage(int damage)
-        {
-            _playerHealth.TakeDamage(damage);
-        }
-
-        public void Attack()
-        {
-            FindTarget();
-            
+            _playerWeaponManager.ResetVisionRange(_characterStatsSO.VisionRange);
         }
     }
 }

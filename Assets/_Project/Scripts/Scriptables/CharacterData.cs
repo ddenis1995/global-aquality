@@ -7,11 +7,12 @@ namespace _Project.Scripts.Scriptables
     public class CharacterData : ScriptableObject
     {
         public string Name;
-        public int MaxHealth;
-        public int DamageBase;
-        public int Range;
-        public int Cooldown;
-        public int Speed;
+        public float MaxHealth;
+        public float DamageBase;
+        public float Range;
+        public float Cooldown;
+        public float Speed;
+        public float VisionRange = 30f;
         public WeaponSO[] Weapons;
     }
 }

@@ -11,7 +11,7 @@ namespace _Project.Scripts
     {
         public static PlayerHealth Instance { get; private set; }
 
-        private float health = 100;
+        private float _health = 100;
 
         private void Awake()
         {
@@ -24,18 +24,18 @@ namespace _Project.Scripts
             Instance = this;
         }
 
-        public void ResetHealth(int maxHealth)
+        public void ResetHealth(float maxHealth)
         {
-            health = maxHealth;
+            _health = maxHealth;
         }
 
 
         public void TakeDamage(float damage)
         {
             Debug.Log("Player took damage!");
-            health = Mathf.Max(0, health - damage);
+            _health = Mathf.Max(0, _health - damage);
             // I-frames? UI? Death? Here.
-            if (health <= 0) Die();
+            if (_health <= 0) Die();
         }
 
         void Die()

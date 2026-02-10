@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: BasicHero
   MaxHealth: 100
-  DamageBase: 0
+  DamageBase: 1
+  Range: 5
+  Cooldown: 1
   Speed: 5
+  VisionRange: 30
   Weapons:
   - {fileID: 11400000, guid: 8704f97a124430b49a2927d4fa09085d, type: 2}
