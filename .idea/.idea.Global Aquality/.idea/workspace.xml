@@ -9,13 +9,10 @@
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/EnemyVariant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/EnemyVariant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/PlayerVariant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/PlayerVariant.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/BasicEnemyLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/BasicEnemyLogic.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Enemies/BasicMob.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Enemies/BasicMob.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Payer/PlayerPositionSO.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Payer/PlayerPositionSO.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/EnemyData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/MyPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/MyPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +25,11 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/IAttacker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/IDamagable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/PlayerPositionSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Pistol.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -129,6 +125,8 @@
       <workItem from="1768318553911" duration="8243000" />
       <workItem from="1768404223995" duration="10458000" />
       <workItem from="1768473489144" duration="9218000" />
+      <workItem from="1768812460208" duration="618000" />
+      <workItem from="1770711787952" duration="6084000" />
     </task>
     <servers />
   </component>

@@ -9,6 +9,8 @@ namespace _Project.Scripts.Scriptables
         public string Name;
         public int MaxHealth;
         public int DamageBase;
+        public int Range;
+        public int Cooldown;
         public int Speed;
         public WeaponSO[] Weapons;
     }

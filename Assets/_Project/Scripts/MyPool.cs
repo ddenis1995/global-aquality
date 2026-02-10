@@ -6,12 +6,16 @@ namespace _Project.Scripts
 {
     public class MyPool:MonoBehaviour
     {
+        [SerializeField] private int _poolDefaultSize = 100;
+        [SerializeField] private int _poolMaxSize = 1000;
+        
         public PoolableItem Item;
         private ObjectPool<PoolableItem> _myPool;
         private Vector3 _position;
+        
         private void Awake()
         {
-            _myPool = new ObjectPool<PoolableItem>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPooledItem, true, 100, 1000);
+            _myPool = new ObjectPool<PoolableItem>(CreatePooledItem, OnTakeFromPool, OnReturnedToPool, OnDestroyPooledItem, true, _poolDefaultSize, _poolMaxSize);
         }
 
         private PoolableItem CreatePooledItem()

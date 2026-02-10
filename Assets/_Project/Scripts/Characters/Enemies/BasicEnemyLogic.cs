@@ -11,24 +11,47 @@ namespace _Project.Scripts.Characters.Enemies
         [SerializeField] private PlayerPositionSO TargetPositionSO;
         [SerializeField] private PoolableItem Item;
         [SerializeField] private CharacterController _controller;
+        [SerializeField] private LayerMask playerLayer;
 
         private Vector3 _playerDirection;
         private float _speed;
         private float _damage;
+        private float _attackRange;
+        private float _attackCooldown;
         private int _maxHealth;
         private int _health;
+
+        private float nextAttackTime = 0f; // Key: absolute time when next attack allowed
 
         private void Start()
         {
             _speed = Data.Speed;
+
             _damage = Data.DamageBase;
+            _attackRange = Data.Range;
+            _attackCooldown = Data.Cooldown;
+
             _maxHealth = Data.MaxHealth;
             _health = _maxHealth;
         }
 
         private void Update()
         {
-            _controller.Move(_playerDirection * _speed * Time.deltaTime);
+            // Every frame: check if cooldown ready + player in range
+            if (Time.time >= nextAttackTime)
+            {
+                _controller.Move(_playerDirection * _speed * Time.deltaTime);
+                if (PlayerInRange())
+                {
+                    Attack();
+                    nextAttackTime = Time.time + _attackCooldown; // Reset cooldown 
+                }
+            }
+        }
+
+        private bool PlayerInRange()
+        {
+            return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
         }
 
         private void FixedUpdate()
@@ -58,7 +81,9 @@ namespace _Project.Scripts.Characters.Enemies
 
         public void Attack()
         {
-            throw new NotImplementedException();
+            // Hit FX/anim...
+            PlayerHealth.Instance?.TakeDamage(_damage);
+            //nextAttackTime = Time.time + attackCooldown;
         }
     }
 }

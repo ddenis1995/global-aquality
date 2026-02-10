@@ -155,6 +155,9 @@ MonoBehaviour:
   TargetPositionSO: {fileID: 11400000, guid: 029e1a05b4d5cf14c9d6c79c7d35e739, type: 2}
   Item: {fileID: 4823969595520987026}
   _controller: {fileID: 1793624209625663627}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &4823969595520987026
 MonoBehaviour:
   m_ObjectHideFlags: 0

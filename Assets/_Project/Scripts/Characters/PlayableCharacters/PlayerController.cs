@@ -6,16 +6,19 @@ namespace _Project.Scripts.Characters.PlayableCharacters
     [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        private CharacterController _characterController;
+        [SerializeField] private CharacterController _characterController;
         private Vector2 _inputVector;
         private Vector3 _movementVector;
-
-        [SerializeField] private float _movementSpeed = 5f;
+        
+        private float _movementSpeed;
         [SerializeField] private float _gravity = -2f;
+
+        [HideInInspector]
+        public float MovementSpeed;
     
         private void Start()
         {
-            _characterController = GetComponent<CharacterController>();
+            _movementSpeed = MovementSpeed;
         }
 
         private void Update()
