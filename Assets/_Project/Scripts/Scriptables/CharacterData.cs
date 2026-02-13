@@ -6,7 +6,7 @@ namespace _Project.Scripts.Scriptables
     [CreateAssetMenu(fileName = "CharacterData", menuName = "Scriptable Objects/CharacterData")]
     public class CharacterData : ScriptableObject
     {
-        public string Name;
+        public string NameOrType;
         public float MaxHealth;
         public float DamageBase;
         public float Range;

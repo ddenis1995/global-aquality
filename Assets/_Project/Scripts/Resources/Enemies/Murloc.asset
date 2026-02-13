@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b95cf8d8f2b4f41a90572ae721c23e5, type: 3}
-  m_Name: MobPunch
+  m_Script: {fileID: 11500000, guid: 2652cf14170750c438185b6098498e07, type: 3}
+  m_Name: Murloc
   m_EditorClassIdentifier: 
-  Name: MobPunch
-  RateOfFire: 1
-  ProjectilePrefab: {fileID: 0}
-  Damage: 1
+  NameOrType: Murloc
+  MaxHealth: 10
+  DamageBase: 5
   Range: 1
+  Cooldown: 3
   Speed: 1
-  TargetingType: 0
+  VisionRange: 30
+  Weapons:
+  - {fileID: 11400000, guid: e966461b0f0f8bb458f9e125f5b57717, type: 2}

@@ -5,31 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="85de56ad-3930-4857-b791-a70549cb1ca5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerWeaponManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerWeaponManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/TargetFinder.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/TargetFinder.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Cooldown.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Cooldown.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Projectile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Projectile.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Projectiles/PistolBullet.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Projectiles/PistolBullet.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Global Aquality/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Global Aquality/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/EnemyVariant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/EnemyVariant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/PlayerVariant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/PlayerVariant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/EnemyVariant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/EnemyVariant.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/BasicEnemyLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/BasicEnemyLogic.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerLogic.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerLogic.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/IDamagable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/IDamagable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Enemies/BasicMob.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Enemies/BasicMob.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Payer/BasicHeroData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Payer/BasicHeroData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Weapons/Pistol.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Weapons/Pistol.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Weapons/MobPunch.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Weapons/MobPunch.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/WeaponSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/WeaponSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +25,14 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Characters/PlayableCharacters/PlayerWeaponManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/IAttacker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/IDamagable.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Managers/GameManagement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Managers/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/CharacterData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Scriptables/PlayerPositionSO.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/TargetFinder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/UI/KillCounterUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Cooldown.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Projectile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Project/Scripts/Weapons/Projectiles/PistolBullet.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,7 +132,8 @@
       <workItem from="1768404223995" duration="10458000" />
       <workItem from="1768473489144" duration="9218000" />
       <workItem from="1768812460208" duration="618000" />
-      <workItem from="1770711787952" duration="26976000" />
+      <workItem from="1770711787952" duration="27314000" />
+      <workItem from="1770968649536" duration="7419000" />
     </task>
     <servers />
   </component>

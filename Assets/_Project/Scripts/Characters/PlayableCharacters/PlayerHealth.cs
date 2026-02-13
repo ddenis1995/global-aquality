@@ -1,5 +1,7 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Project.Scripts
 {
@@ -11,7 +13,11 @@ namespace _Project.Scripts
     {
         public static PlayerHealth Instance { get; private set; }
 
-        private float _health = 100;
+        [SerializeField] private Image _barUI;
+        [SerializeField] private TMP_Text _healthText;
+
+        private float _health;
+        private float _maxHealth = 100;
 
         private void Awake()
         {
@@ -27,6 +33,7 @@ namespace _Project.Scripts
         public void ResetHealth(float maxHealth)
         {
             _health = maxHealth;
+            UpdateUI();
         }
 
 
@@ -35,6 +42,7 @@ namespace _Project.Scripts
             Debug.Log("Player took damage!");
             _health = Mathf.Max(0, _health - damage);
             // I-frames? UI? Death? Here.
+            UpdateUI();
             if (_health <= 0) Die();
         }
 
@@ -42,6 +50,14 @@ namespace _Project.Scripts
         {
             Debug.Log("Player died!");
             /* Respawn, etc. */
+        }
+
+        private void UpdateUI()
+        {
+            //string healthDisplay
+            _barUI.fillAmount =  _health /_maxHealth;
+            _healthText.text = _health+"/"+_maxHealth;
+            Debug.Log(_health / _maxHealth);
         }
     }
 }

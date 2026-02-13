@@ -1,4 +1,5 @@
 using System;
+using _Project.Scripts.Managers;
 using _Project.Scripts.Scriptables;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace _Project.Scripts.Characters.Enemies
         private float _attackCooldown;
         private float _maxHealth;
         private float _health;
+        private string _enemyType;
 
         private float nextAttackTime = 0f; // Key: absolute time when next attack allowed
 
@@ -46,12 +48,12 @@ namespace _Project.Scripts.Characters.Enemies
         {
             CalculateDirection();
         }
-        
+
         private bool PlayerInRange()
         {
             return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
         }
-        
+
         private void CalculateDirection()
         {
             _playerDirection = TargetPositionSO.Value - transform.position;
@@ -63,16 +65,22 @@ namespace _Project.Scripts.Characters.Enemies
         {
             if (_maxHealth > 0)
             {
-                Debug.Log($"I take {damage} points of damage");
+                //Debug.Log($"I take {damage} points of damage");
                 // Hit FX/anim...
                 _health -= damage;
                 if (_health <= 0)
                 {
-                    // Death FX/anim...
-                    _health = 0;
-                    Item.Kill();
+                    Die();
                 }
             }
+        }
+
+        private void Die()
+        {
+            _health = 0;
+            GameManagement.RegisterKill(_enemyType);
+            // Death FX/anim...
+            Item.Kill();
         }
 
         public void Attack()
@@ -97,7 +105,8 @@ namespace _Project.Scripts.Characters.Enemies
 
             _maxHealth = Data.MaxHealth;
             _health = _maxHealth;
-            
+
+            _enemyType = Data.NameOrType;
         }
     }
 }
