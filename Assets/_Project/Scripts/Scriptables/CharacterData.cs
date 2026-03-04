@@ -14,5 +14,6 @@ namespace _Project.Scripts.Scriptables
         public float Speed;
         public float VisionRange = 30f;
         public WeaponSO[] Weapons;
+        public bool IsAttacker = false;
     }
 }

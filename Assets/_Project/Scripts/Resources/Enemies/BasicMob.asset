@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2652cf14170750c438185b6098498e07, type: 3}
   m_Name: BasicMob
   m_EditorClassIdentifier: 
-  Name: BasicMob
+  NameOrType: BasicEnemy
   MaxHealth: 10
   DamageBase: 5
   Range: 1

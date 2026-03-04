@@ -70,7 +70,7 @@ namespace _Project.Scripts
                         {
                             // Skip self/triggers if needed
                             if (overlapBuffer[i].transform == transform) continue;
-                            float hp = overlapBuffer[i].GetComponent<BasicEnemyScript>().GetHealth();
+                            float hp = overlapBuffer[i].GetComponent<Enemy>().GetHealth();
             
                             if (hp > mostHealth)
                             {
@@ -86,7 +86,7 @@ namespace _Project.Scripts
                         {
                             // Skip self/triggers if needed
                             if (overlapBuffer[i].transform == transform) continue;
-                            float hp = overlapBuffer[i].GetComponent<BasicEnemyScript>().GetHealth();
+                            float hp = overlapBuffer[i].GetComponent<Enemy>().GetHealth();
             
                             if (hp < leastHealth)
                             {

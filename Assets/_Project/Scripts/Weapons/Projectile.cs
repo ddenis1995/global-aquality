@@ -36,7 +36,7 @@ namespace _Project.Scripts.Weapons
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<BasicEnemyScript>(out var enemy))
+            if (other.TryGetComponent<Enemy>(out var enemy))
             {
                 enemy.TakeDamage(_damage);
                 OnHit(other); // Virtual hit FX

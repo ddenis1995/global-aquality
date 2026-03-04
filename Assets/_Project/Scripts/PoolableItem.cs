@@ -16,6 +16,5 @@ namespace _Project.Scripts
         {
             _killAction(this);
         }
-
     }
 }

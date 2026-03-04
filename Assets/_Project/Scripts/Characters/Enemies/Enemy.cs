@@ -1,19 +1,17 @@
-using System;
+﻿using System;
 using _Project.Scripts.Managers;
 using _Project.Scripts.Scriptables;
 using UnityEngine;
 
 namespace _Project.Scripts.Characters.Enemies
 {
-    [RequireComponent(typeof(CharacterController))]
-    public class BasicEnemyScript : MonoBehaviour, IDamagable, IAttacker
+    public abstract class Enemy : MonoBehaviour
     {
         [SerializeField] private CharacterData Data;
         [SerializeField] private PlayerPositionSO TargetPositionSO;
-        [SerializeField] private PoolableItem Item;
         [SerializeField] private CharacterController _controller;
         [SerializeField] private LayerMask playerLayer;
-
+        
         private Vector3 _playerDirection;
         private float _speed;
         private float _damage;
@@ -22,46 +20,50 @@ namespace _Project.Scripts.Characters.Enemies
         private float _maxHealth;
         private float _health;
         private string _enemyType;
-
-        private float nextAttackTime = 0f; // Key: absolute time when next attack allowed
+        private bool _isAttacker;
+        
+        private float _nextAttackTime = 0f; // Key: absolute time when next attack allowed
 
         private void OnEnable()
         {
-            Reset();
+            Initialize();
         }
 
         private void Update()
         {
-            // Every frame: check if cooldown ready + player in range
-            if (Time.time >= nextAttackTime)
-            {
-                _controller.Move(_playerDirection * _speed * Time.deltaTime);
-                if (PlayerInRange())
+            if (_isAttacker){
+                // Every frame: check if cooldown ready + player in range
+                if (Time.time >= _nextAttackTime)
                 {
-                    Attack();
-                    nextAttackTime = Time.time + _attackCooldown; // Reset cooldown 
+                    _controller.Move(_playerDirection * _speed * Time.deltaTime);
+                    if (PlayerInRange())
+                    {
+                        Attack();
+                        _nextAttackTime = Time.time + _attackCooldown; // Reset cooldown 
+                    }
                 }
             }
         }
-
+        
         private void FixedUpdate()
         {
             CalculateDirection();
         }
-
+        
         private bool PlayerInRange()
         {
-            return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
+            //return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
+            return _attackRange >= Vector3.SqrMagnitude(_playerDirection);
         }
-
+        
         private void CalculateDirection()
         {
             _playerDirection = TargetPositionSO.Value - transform.position;
             _playerDirection.Normalize();
             _playerDirection.y = 0;
         }
-
-        public void TakeDamage(float damage)
+        
+        public virtual void TakeDamage(float damage)
         {
             if (_maxHealth > 0)
             {
@@ -74,29 +76,32 @@ namespace _Project.Scripts.Characters.Enemies
                 }
             }
         }
-
-        private void Die()
+        
+        public virtual void Die()
         {
             _health = 0;
             GameManagement.RegisterKill(_enemyType);
             // Death FX/anim...
-            Item.Kill();
+            Deactivate();
         }
-
-        public void Attack()
+        
+        public virtual void Attack()
         {
             // Hit FX/anim...
             PlayerHealth.Instance?.TakeDamage(_damage);
             //nextAttackTime = Time.time + attackCooldown;
         }
-
+        
         public float GetHealth()
         {
             return _health;
         }
-
-        public void Reset()
+        
+        // Common methods, e.g., TakeDamage(), Die(), etc.
+        public virtual void Initialize()
         {
+            /* Reset state when spawned */
+            
             _speed = Data.Speed;
 
             _damage = Data.DamageBase;
@@ -107,6 +112,8 @@ namespace _Project.Scripts.Characters.Enemies
             _health = _maxHealth;
 
             _enemyType = Data.NameOrType;
+            _isAttacker = Data.IsAttacker;
         }
+        public virtual void Deactivate() { gameObject.SetActive(false); }
     }
 }
