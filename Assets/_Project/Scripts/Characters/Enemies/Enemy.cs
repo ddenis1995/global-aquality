@@ -12,6 +12,8 @@ namespace _Project.Scripts.Characters.Enemies
         [SerializeField] private CharacterController _controller;
         [SerializeField] private LayerMask playerLayer;
         
+        public System.Action OnDeathCallback;
+        
         private Vector3 _playerDirection;
         private float _speed;
         private float _damage;
@@ -114,6 +116,12 @@ namespace _Project.Scripts.Characters.Enemies
             _enemyType = Data.NameOrType;
             _isAttacker = Data.IsAttacker;
         }
-        public virtual void Deactivate() { gameObject.SetActive(false); }
+
+        public virtual void Deactivate()
+        {
+            gameObject.SetActive(false); 
+            
+            OnDeathCallback?.Invoke();
+        }
     }
 }
