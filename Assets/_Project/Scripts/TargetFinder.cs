@@ -22,8 +22,8 @@ namespace _Project.Scripts
             else
             {
                 int hitCount = Physics.OverlapSphereNonAlloc(fromPos, range, overlapBuffer, targetLayer);
-        
-                
+
+
                 switch (targetType)
                 {
                     case TargetingTypes.Closest:
@@ -32,73 +32,81 @@ namespace _Project.Scripts
                         {
                             // Skip self/triggers if needed
                             if (overlapBuffer[i].transform == transform) continue;
-            
+
                             Vector3 delta = overlapBuffer[i].transform.position - fromPos;
                             float distSq = delta.sqrMagnitude;
-            
+
                             if (distSq < closestDistSq)
                             {
                                 closestDistSq = distSq;
                                 target = overlapBuffer[i].transform;
                             }
                         }
+
                         break;
-                    
+
                     case TargetingTypes.Furthest:
 
                         float furthestDistSq = 0f;
-                        
+
                         for (int i = 0; i < hitCount; i++)
                         {
                             // Skip self/triggers if needed
                             if (overlapBuffer[i].transform == transform) continue;
-            
+
                             Vector3 delta = overlapBuffer[i].transform.position - fromPos;
                             float distSq = delta.sqrMagnitude;
-            
+
                             if (distSq > furthestDistSq)
                             {
                                 furthestDistSq = distSq;
                                 target = overlapBuffer[i].transform;
                             }
                         }
+
                         break;
                     case TargetingTypes.Healthiest:
                         float mostHealth = 0f;
-                        
+
                         for (int i = 0; i < hitCount; i++)
                         {
                             // Skip self/triggers if needed
                             if (overlapBuffer[i].transform == transform) continue;
                             float hp = overlapBuffer[i].GetComponent<Enemy>().GetHealth();
-            
+
                             if (hp > mostHealth)
                             {
                                 mostHealth = hp;
                                 target = overlapBuffer[i].transform;
                             }
                         }
+
                         break;
                     case TargetingTypes.MostDamaged:
                         float leastHealth = 0f;
-                        
+
                         for (int i = 0; i < hitCount; i++)
                         {
                             // Skip self/triggers if needed
                             if (overlapBuffer[i].transform == transform) continue;
                             float hp = overlapBuffer[i].GetComponent<Enemy>().GetHealth();
-            
+
                             if (hp < leastHealth)
                             {
                                 leastHealth = hp;
                                 target = overlapBuffer[i].transform;
                             }
                         }
+
                         break;
                 }
             }
 
-            _targetPosition = target.position;
+            if (target != null)
+            {
+                _targetPosition = target.position;
+            }
+
             return target;
         }
     }

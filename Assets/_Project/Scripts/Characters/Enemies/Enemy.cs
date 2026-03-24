@@ -55,7 +55,7 @@ namespace _Project.Scripts.Characters.Enemies
         private bool PlayerInRange()
         {
             //return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
-            return _attackRange >= Vector3.SqrMagnitude(_playerDirection);
+            return _attackRange >= Vector3.SqrMagnitude(TargetPositionSO.Value - transform.position);
         }
         
         private void CalculateDirection()
@@ -119,8 +119,6 @@ namespace _Project.Scripts.Characters.Enemies
 
         public virtual void Deactivate()
         {
-            gameObject.SetActive(false); 
-            
             OnDeathCallback?.Invoke();
         }
     }

@@ -21,3 +21,4 @@ MonoBehaviour:
   VisionRange: 30
   Weapons:
   - {fileID: 11400000, guid: e966461b0f0f8bb458f9e125f5b57717, type: 2}
+  IsAttacker: 1
