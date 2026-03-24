@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using _Project.Scripts.Characters.Enemies;
+using _Project.Scripts.Scriptables;
 using _Project.Scripts.Scriptables.LevelSequencing;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -9,10 +12,15 @@ namespace _Project.Scripts.Managers
 {
     public class WaveManager : MonoBehaviour
     {
-        [Header("Level & Pools")] [SerializeField]
+        [Header("Level sequence")] [SerializeField]
         private LevelSequence _levelConfig;
 
-        [SerializeField] private Transform[] _defaultSpawnPoints;
+        [Header("Spawning locations")] [SerializeField]
+        private Transform[] _defaultSpawnPoints;
+
+        [SerializeField] private float _minSpawnRadius = 7;
+        [SerializeField] private float _maxSpawnRadius = 8;
+        [SerializeField] private PlayerPositionSO _playerPosition;
 
         [Header("Performance tuning")] [SerializeField]
         private int _defaultPoolCapacity = 20;
@@ -22,6 +30,9 @@ namespace _Project.Scripts.Managers
         private int _currentWaveIndex = -1;
         private int _enemiesAlive = 0;
 
+        private bool _isSpawnAroundPlayer = false;
+        private Vector3 _spawnPosition;
+        
         private Dictionary<Enemy, IObjectPool<Enemy>> _pools
             = new Dictionary<Enemy, IObjectPool<Enemy>>();
 
@@ -48,8 +59,13 @@ namespace _Project.Scripts.Managers
             {
                 _pools[enemy] = new ObjectPool<Enemy>(
                     createFunc: () => Instantiate(enemy),
-                    actionOnGet: obj => obj.SetActive(true),
-                    actionOnRelease: obj => obj.SetActive(false),
+                    actionOnGet: obj =>
+                    {
+                        obj.transform.position = _spawnPosition;
+                        obj.gameObject.SetActive(true);
+                        obj.Initialize();
+                    },
+                    actionOnRelease: obj => obj.gameObject.SetActive(false),
                     actionOnDestroy: obj => Destroy(obj),
                     collectionCheck: false,
                     defaultCapacity: _defaultPoolCapacity,
@@ -105,9 +121,26 @@ namespace _Project.Scripts.Managers
 
                 Transform spawnPoint = PickSpawnPoint(wave.CustomSpawnPoints);
 
+                
+                if (wave.CustomSpawnPoints == null || wave.CustomSpawnPoints.Length == 0)
+                {
+                    Debug.Log("No custom spawn points");
+                    if (_defaultSpawnPoints == null || _defaultSpawnPoints.Length == 0)
+                    {
+                        Debug.Log("No default spawn points, will spawn around player");
+                        _isSpawnAroundPlayer = true;
+                        _spawnPosition = CalculatePosition(_playerPosition.Value);
+                    }
+                }
+
                 var instance = _pools[spawnData.EnemyPrefab].Get();
-                instance.transform.position = spawnPoint.position;
-                instance.transform.rotation = spawnPoint.rotation;
+                
+                if (!_isSpawnAroundPlayer)
+                {
+                    instance.transform.position = spawnPoint.position;
+                    instance.transform.rotation = spawnPoint.rotation;
+                }
+                
 
                 var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
                 if (enemyComp != null)
@@ -126,6 +159,7 @@ namespace _Project.Scripts.Managers
                 float delay = wave.TimeBetweenSpawns;
                 if (wave.SpawnTimeVariance > 0.01f)
                     delay += Random.Range(-wave.SpawnTimeVariance, wave.SpawnTimeVariance);
+                
 
                 yield return new WaitForSeconds(Mathf.Max(0.05f, delay));
             }
@@ -155,9 +189,24 @@ namespace _Project.Scripts.Managers
                 : _defaultSpawnPoints;
 
             if (points == null || points.Length == 0)
-                return transform; // fallback to spawner position
+
+                return transform; // fallback spawner position
 
             return points[Random.Range(0, points.Length)];
+        }
+
+        private Vector3 CalculatePosition(Vector3 startPos)
+        {
+            float randomDistance = Random.Range(_minSpawnRadius, _maxSpawnRadius);
+
+            float randomAngle = Random.Range(0f, Mathf.PI * 2f);
+
+            float x = Mathf.Cos(randomAngle) * randomDistance;
+            float z = Mathf.Sin(randomAngle) * randomDistance;
+
+            Vector3 pos = new Vector3(x, 0, z) + startPos;
+
+            return pos;
         }
 
         // Call this from enemy death / inspector / UI

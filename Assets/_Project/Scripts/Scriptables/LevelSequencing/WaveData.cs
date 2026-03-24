@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using _Project.Scripts.Characters.Enemies;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TimeBlock", menuName = "Scriptable Objects/TimeBlock")]
+[CreateAssetMenu(fileName = "WaveData", menuName = "Scriptable Objects/WaveData")]
 public class WaveData : ScriptableObject
 {
     public string WaveName;
@@ -16,7 +16,7 @@ public class WaveData : ScriptableObject
     [Tooltip("Optional - random range for spawn timing variation")]
     public float SpawnTimeVariance = 0.15f;        // Time when spawning starts
 
-    public class EnemySpawnData
+    [System.Serializable] public class EnemySpawnData
     {
         public Enemy EnemyPrefab;  // Enemy type
         public int Count;               // Amount of enemies

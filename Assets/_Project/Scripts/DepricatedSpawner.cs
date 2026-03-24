@@ -4,13 +4,13 @@ using Random = UnityEngine.Random;
 
 namespace _Project.Scripts
 {
-    public class Spawner : MonoBehaviour
+    public class DepricatedSpawner : MonoBehaviour
     {
         [SerializeField] private float EnemiesPerSecond = 1;
         [SerializeField] private PlayerPositionSO _playerPositionSO;
         [SerializeField] private float _minSpawnRadius;
         [SerializeField] private float _maxSpawnRadius;
-        [SerializeField] private MyPool _myPool;
+        [SerializeField] private DepricatedMyPool depricatedMyPool;
 
 
         private float LastSpawnTime;
@@ -23,7 +23,7 @@ namespace _Project.Scripts
                 int enemiesToSpawnInFrame = Mathf.CeilToInt(Time.deltaTime / delay);
                 while (enemiesToSpawnInFrame > 0)
                 {
-                    _myPool.SpawnObject(CalculatePosition(_playerPositionSO.Value));
+                    depricatedMyPool.SpawnObject(CalculatePosition(_playerPositionSO.Value));
 
                     enemiesToSpawnInFrame--;
                 }

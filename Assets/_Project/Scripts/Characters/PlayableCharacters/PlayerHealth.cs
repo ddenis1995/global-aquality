@@ -57,7 +57,7 @@ namespace _Project.Scripts
             //string healthDisplay
             _barUI.fillAmount =  _health /_maxHealth;
             _healthText.text = _health+"/"+_maxHealth;
-            Debug.Log(_health / _maxHealth);
+            Debug.Log((_health / _maxHealth)*100);
         }
     }
 }

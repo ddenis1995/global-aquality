@@ -1187,8 +1187,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1050946621}
-  - component: {fileID: 1050946620}
-  - component: {fileID: 1050946622}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1196,21 +1194,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1050946620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050946619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622d7740c1c59cf45b634926965b9e0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _poolDefaultSize: 100
-  _poolMaxSize: 200
-  Item: {fileID: 4823969595520987026, guid: 143c5b526d46922499b2fef78d2961f8, type: 3}
 --- !u!4 &1050946621
 Transform:
   m_ObjectHideFlags: 0
@@ -1226,23 +1209,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1050946622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050946619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: baf1d015f71b09740907a0192b084698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemiesPerSecond: 1
-  _playerPositionSO: {fileID: 11400000, guid: 029e1a05b4d5cf14c9d6c79c7d35e739, type: 2}
-  _minSpawnRadius: 5
-  _maxSpawnRadius: 10
-  _myPool: {fileID: 1050946620}
 --- !u!1 &1051329112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091137810}
   - component: {fileID: 1091137809}
+  - component: {fileID: 1091137811}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -1318,6 +1285,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091137811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091137808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e037aad1a464e5397ff908a9d94fc6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelConfig: {fileID: 11400000, guid: 92d8907a4bd1ac147a045b1016774d69, type: 2}
+  _defaultSpawnPoints: []
+  _minSpawnRadius: 7
+  _maxSpawnRadius: 8
+  _playerPosition: {fileID: 11400000, guid: 029e1a05b4d5cf14c9d6c79c7d35e739, type: 2}
+  _defaultPoolCapacity: 20
+  _defaultMaxPoolSize: 100
 --- !u!1 &1502491166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,55 +1330,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1595379453
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1595379455}
-  - component: {fileID: 1595379454}
-  m_Layer: 0
-  m_Name: Sequencer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!320 &1595379454
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595379453}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 80d6a97ed14e39b43bfb90a21a366851, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings: []
-  m_ExposedReferences:
-    m_References: []
---- !u!4 &1595379455
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595379453}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 286.73257, y: 433.82993, z: -1.5149058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1576,6 +1513,10 @@ PrefabInstance:
       propertyPath: _healthText
       value: 
       objectReference: {fileID: 1016167231}
+    - target: {fileID: 7578960041242391115, guid: 6fd70fc5b73711b479f900c472905f72, type: 3}
+      propertyPath: poolSize
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8931544039158312355, guid: 6fd70fc5b73711b479f900c472905f72, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1627,7 +1568,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1051329113}
   - {fileID: 379374682}
-  - {fileID: 1595379455}
   - {fileID: 1863481436}
   - {fileID: 1091137810}
   - {fileID: 1050946621}

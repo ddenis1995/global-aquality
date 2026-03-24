@@ -4,7 +4,7 @@ using UnityEngine.Pool;
 
 namespace _Project.Scripts
 {
-    public class MyPool:MonoBehaviour
+    public class DepricatedMyPool:MonoBehaviour
     {
         [SerializeField] private int _poolDefaultSize = 100;
         [SerializeField] private int _poolMaxSize = 1000;
