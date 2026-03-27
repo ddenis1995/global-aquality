@@ -32,7 +32,7 @@ namespace _Project.Scripts.Managers
 
         private bool _isSpawnAroundPlayer = false;
         private Vector3 _spawnPosition;
-        
+
         private Dictionary<Enemy, IObjectPool<Enemy>> _pools
             = new Dictionary<Enemy, IObjectPool<Enemy>>();
 
@@ -58,10 +58,11 @@ namespace _Project.Scripts.Managers
             foreach (var enemy in uniqueEnemies)
             {
                 _pools[enemy] = new ObjectPool<Enemy>(
-                    createFunc: () => Instantiate(enemy),
+                    createFunc: () =>
+                        Instantiate(enemy),
                     actionOnGet: obj =>
                     {
-                        obj.transform.position = _spawnPosition;
+                        obj.transform.position = CalculatePosition(_playerPosition.Value);
                         obj.gameObject.SetActive(true);
                         obj.Initialize();
                     },
@@ -119,38 +120,52 @@ namespace _Project.Scripts.Managers
                 var spawnData = PickNextEnemy(wave.EnemiesToSpawn);
                 if (spawnData == null) break;
 
-                Transform spawnPoint = PickSpawnPoint(wave.CustomSpawnPoints);
 
-                
                 if (wave.CustomSpawnPoints == null || wave.CustomSpawnPoints.Length == 0)
                 {
-                    Debug.Log("No custom spawn points");
                     if (_defaultSpawnPoints == null || _defaultSpawnPoints.Length == 0)
                     {
-                        Debug.Log("No default spawn points, will spawn around player");
                         _isSpawnAroundPlayer = true;
-                        _spawnPosition = CalculatePosition(_playerPosition.Value);
                     }
                 }
 
-                var instance = _pools[spawnData.EnemyPrefab].Get();
-                
+
                 if (!_isSpawnAroundPlayer)
                 {
+                    Transform spawnPoint = PickSpawnPoint(wave.CustomSpawnPoints);
+
+                    var instance = _pools[spawnData.EnemyPrefab].Get();
+
+
                     instance.transform.position = spawnPoint.position;
                     instance.transform.rotation = spawnPoint.rotation;
-                }
-                
 
-                var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
-                if (enemyComp != null)
-                {
-                    enemyComp.OnDeathCallback = () =>
+                    var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
+                    if (enemyComp != null)
                     {
-                        _enemiesAlive--;
-                        _pools[spawnData.EnemyPrefab].Release(instance);
-                    };
+                        enemyComp.OnDeathCallback = () =>
+                        {
+                            _enemiesAlive--;
+                            _pools[spawnData.EnemyPrefab].Release(instance);
+                        };
+                    }
                 }
+                else
+                {
+                    var instance = _pools[spawnData.EnemyPrefab].Get();
+                    instance.transform.position = CalculatePosition(_playerPosition.Value);
+
+                    var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
+                    if (enemyComp != null)
+                    {
+                        enemyComp.OnDeathCallback = () =>
+                        {
+                            _enemiesAlive--;
+                            _pools[spawnData.EnemyPrefab].Release(instance);
+                        };
+                    }
+                }
+
 
                 _enemiesAlive++;
                 spawned++;
@@ -159,7 +174,7 @@ namespace _Project.Scripts.Managers
                 float delay = wave.TimeBetweenSpawns;
                 if (wave.SpawnTimeVariance > 0.01f)
                     delay += Random.Range(-wave.SpawnTimeVariance, wave.SpawnTimeVariance);
-                
+
 
                 yield return new WaitForSeconds(Mathf.Max(0.05f, delay));
             }
@@ -204,7 +219,7 @@ namespace _Project.Scripts.Managers
             float x = Mathf.Cos(randomAngle) * randomDistance;
             float z = Mathf.Sin(randomAngle) * randomDistance;
 
-            Vector3 pos = new Vector3(x, 0, z) + startPos;
+            Vector3 pos = new Vector3(x + startPos.x, 0, z + startPos.z);
 
             return pos;
         }

@@ -55,7 +55,7 @@ namespace _Project.Scripts.Characters.Enemies
         private bool PlayerInRange()
         {
             //return Physics.OverlapSphere(transform.position, _attackRange, playerLayer).Length > 0;
-            return _attackRange >= Vector3.SqrMagnitude(TargetPositionSO.Value - transform.position);
+            return _attackRange*_attackRange >= Vector3.SqrMagnitude(TargetPositionSO.Value - transform.position);
         }
         
         private void CalculateDirection()
@@ -69,7 +69,6 @@ namespace _Project.Scripts.Characters.Enemies
         {
             if (_maxHealth > 0)
             {
-                //Debug.Log($"I take {damage} points of damage");
                 // Hit FX/anim...
                 _health -= damage;
                 if (_health <= 0)
@@ -106,9 +105,9 @@ namespace _Project.Scripts.Characters.Enemies
             
             _speed = Data.Speed;
 
-            _damage = Data.DamageBase;
-            _attackRange = Data.Range;
-            _attackCooldown = Data.Cooldown;
+            _damage = Data.DamageBase+Data.Weapons[0].Damage;
+            _attackRange = Data.Range+Data.Weapons[0].Range;
+            _attackCooldown = Data.Cooldown+Data.Weapons[0].RateOfFire;
 
             _maxHealth = Data.MaxHealth;
             _health = _maxHealth;

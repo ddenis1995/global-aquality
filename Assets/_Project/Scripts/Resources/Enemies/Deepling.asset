@@ -15,7 +15,7 @@ MonoBehaviour:
   NameOrType: Deepling
   MaxHealth: 5
   DamageBase: 2
-  Range: 1
+  Range: 2
   Cooldown: 3
   Speed: 2
   VisionRange: 30
