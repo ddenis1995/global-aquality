@@ -11,7 +11,7 @@ namespace _Project.Scripts.Characters.Enemies
         [SerializeField] private PlayerPositionSO TargetPositionSO;
         [SerializeField] private CharacterController _controller;
         [SerializeField] private LayerMask playerLayer;
-        
+
         public System.Action OnDeathCallback;
         
         private Vector3 _playerDirection;
@@ -25,11 +25,13 @@ namespace _Project.Scripts.Characters.Enemies
         private bool _isAttacker;
         
         private float _nextAttackTime = 0f; // Key: absolute time when next attack allowed
-
+        private bool _isDead = false;
+        
         private void OnEnable()
         {
             Initialize();
         }
+
 
         private void Update()
         {
@@ -67,12 +69,14 @@ namespace _Project.Scripts.Characters.Enemies
         
         public virtual void TakeDamage(float damage)
         {
+            if (_isDead) return;
             if (_maxHealth > 0)
             {
                 // Hit FX/anim...
                 _health -= damage;
                 if (_health <= 0)
                 {
+                    _isDead = true;
                     Die();
                 }
             }
@@ -102,6 +106,8 @@ namespace _Project.Scripts.Characters.Enemies
         public virtual void Initialize()
         {
             /* Reset state when spawned */
+            OnDeathCallback = null;
+            _isDead = false;
             
             _speed = Data.Speed;
 

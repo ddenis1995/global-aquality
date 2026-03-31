@@ -62,7 +62,7 @@ namespace _Project.Scripts.Managers
                         Instantiate(enemy),
                     actionOnGet: obj =>
                     {
-                        obj.transform.position = CalculatePosition(_playerPosition.Value);
+                        //obj.transform.position = CalculatePosition(_playerPosition.Value);
                         obj.gameObject.SetActive(true);
                         obj.Initialize();
                     },
@@ -152,8 +152,11 @@ namespace _Project.Scripts.Managers
                 }
                 else
                 {
+                    var pos = CalculatePosition(_playerPosition.Value);
+                    Debug.Log("Spawning around player at " + pos);
+                    //spawnData.EnemyPrefab.transform.position = pos;
                     var instance = _pools[spawnData.EnemyPrefab].Get();
-                    instance.transform.position = CalculatePosition(_playerPosition.Value);
+                    instance.transform.position = pos;
 
                     var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
                     if (enemyComp != null)

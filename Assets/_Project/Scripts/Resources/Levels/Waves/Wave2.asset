@@ -18,7 +18,7 @@ MonoBehaviour:
   SpawnTimeVariance: 0.15
   EnemiesToSpawn:
   - EnemyPrefab: {fileID: 8291653048690614263, guid: 2e64a0fe5ba600f4bb04d2f6b1d5afe2, type: 3}
-    Count: 10
+    Count: 300
     Weight: 0
-    SpawnedSoFar: 10
+    SpawnedSoFar: 73
   CustomSpawnPoints: []
