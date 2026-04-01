@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3753973845716646433, guid: a15cb5a78d172e84f9821d2e87c0ebe2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.8153
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3753973845716646433, guid: a15cb5a78d172e84f9821d2e87c0ebe2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3753973845716646433, guid: a15cb5a78d172e84f9821d2e87c0ebe2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.7218676
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3753973845716646433, guid: a15cb5a78d172e84f9821d2e87c0ebe2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -158,3 +158,4 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  _attackFX: {fileID: 7303357123293250743, guid: 31329c942e2420749965b3964c946781, type: 3}

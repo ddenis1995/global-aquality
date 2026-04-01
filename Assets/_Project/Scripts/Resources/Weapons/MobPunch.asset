@@ -16,6 +16,6 @@ MonoBehaviour:
   RateOfFire: 1
   ProjectilePrefab: {fileID: 0}
   Damage: 1
-  Range: 1.5
+  Range: 1
   Speed: 1
   TargetingType: 0

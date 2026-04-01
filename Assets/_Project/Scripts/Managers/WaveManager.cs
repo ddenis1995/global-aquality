@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using _Project.Scripts.Characters.Enemies;
 using _Project.Scripts.Scriptables;
 using _Project.Scripts.Scriptables.LevelSequencing;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeTime: 5
-  _sparkFX: {fileID: 0}
+  _sparkFX: {fileID: 6366145748723671607, guid: 3c4fa3649af283e43be7ae2aee116b33, type: 3}
 --- !u!135 &2931591317517654088
 SphereCollider:
   m_ObjectHideFlags: 0
