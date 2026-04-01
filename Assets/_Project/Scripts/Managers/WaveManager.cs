@@ -62,7 +62,10 @@ namespace _Project.Scripts.Managers
                         Instantiate(enemy),
                     actionOnGet: obj =>
                     {
-                        //obj.transform.position = CalculatePosition(_playerPosition.Value);
+                        //Deactivate controller, so that it doesn't override position
+                        var cc = obj.GetComponent<CharacterController>();
+                        if (cc != null) cc.enabled = false;
+
                         obj.gameObject.SetActive(true);
                         obj.Initialize();
                     },
@@ -106,6 +109,10 @@ namespace _Project.Scripts.Managers
 
         private IEnumerator SpawnWaveRoutine(WaveData wave)
         {
+            _isSpawnAroundPlayer =
+                (wave.CustomSpawnPoints == null || wave.CustomSpawnPoints.Length == 0) &&
+                (_defaultSpawnPoints == null || _defaultSpawnPoints.Length == 0);
+
             // Reset per-wave counters
             foreach (var entry in wave.EnemiesToSpawn)
                 entry.SpawnedSoFar = 0;
@@ -120,55 +127,58 @@ namespace _Project.Scripts.Managers
                 var spawnData = PickNextEnemy(wave.EnemiesToSpawn);
                 if (spawnData == null) break;
 
+                // if (!_isSpawnAroundPlayer)
+                // {
+                //     
+                //
+                //     var instance = _pools[spawnData.EnemyPrefab].Get();
+                //
+                //
+                //     instance.transform.position = spawnPoint.position;
+                //     instance.transform.rotation = spawnPoint.rotation;
+                //
+                //     var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
+                //     if (enemyComp != null)
+                //     {
+                //         enemyComp.OnDeathCallback = () =>
+                //         {
+                //             _enemiesAlive--;
+                //             _pools[spawnData.EnemyPrefab].Release(instance);
+                //         };
+                //     }
+                // }
+                // else
+                // {
+                
+                Transform spawnPoint = PickSpawnPoint(wave.CustomSpawnPoints);
+                var pos = CalculatePosition(_playerPosition.Value);
 
-                if (wave.CustomSpawnPoints == null || wave.CustomSpawnPoints.Length == 0)
+                var instance = _pools[spawnData.EnemyPrefab].Get();
+
+                var cc = instance.GetComponent<CharacterController>();
+                if (cc != null)
+                    cc.enabled = false;
+
+                instance.transform.position = _isSpawnAroundPlayer ? pos : spawnPoint.position;
+                instance.transform.rotation = _isSpawnAroundPlayer ? Quaternion.identity : spawnPoint.rotation;
+                // Instead of Quaternion.identity we're going to need to feed direction towards player
+                
+                var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
+                if (enemyComp != null)
                 {
-                    if (_defaultSpawnPoints == null || _defaultSpawnPoints.Length == 0)
+                    enemyComp.OnDeathCallback = () =>
                     {
-                        _isSpawnAroundPlayer = true;
-                    }
+                        _enemiesAlive--;
+                        _pools[spawnData.EnemyPrefab].Release(instance);
+                    };
                 }
 
-
-                if (!_isSpawnAroundPlayer)
+                if (cc != null)
                 {
-                    Transform spawnPoint = PickSpawnPoint(wave.CustomSpawnPoints);
-
-                    var instance = _pools[spawnData.EnemyPrefab].Get();
-
-
-                    instance.transform.position = spawnPoint.position;
-                    instance.transform.rotation = spawnPoint.rotation;
-
-                    var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
-                    if (enemyComp != null)
-                    {
-                        enemyComp.OnDeathCallback = () =>
-                        {
-                            _enemiesAlive--;
-                            _pools[spawnData.EnemyPrefab].Release(instance);
-                        };
-                    }
+                    cc.enabled = true; // turn back on
+                    // we could move it down a bit so it sticks to the ground
+                    // cc.Move(Vector3.down * 0.1f);
                 }
-                else
-                {
-                    var pos = CalculatePosition(_playerPosition.Value);
-                    Debug.Log("Spawning around player at " + pos);
-                    //spawnData.EnemyPrefab.transform.position = pos;
-                    var instance = _pools[spawnData.EnemyPrefab].Get();
-                    instance.transform.position = pos;
-
-                    var enemyComp = instance.GetComponent<Enemy>(); // your enemy base class
-                    if (enemyComp != null)
-                    {
-                        enemyComp.OnDeathCallback = () =>
-                        {
-                            _enemiesAlive--;
-                            _pools[spawnData.EnemyPrefab].Release(instance);
-                        };
-                    }
-                }
-
 
                 _enemiesAlive++;
                 spawned++;

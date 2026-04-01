@@ -29,10 +29,15 @@ namespace _Project.Scripts.Characters.Enemies
         
         private void OnEnable()
         {
+            Debug.Log($"[{name}] OnEnable at position: {transform.position}");
             Initialize();
         }
 
-
+        private void Start()
+        {
+            Debug.Log($"[{name}] Start at position: {transform.position}");
+        }
+        
         private void Update()
         {
             if (_isAttacker){
@@ -120,6 +125,8 @@ namespace _Project.Scripts.Characters.Enemies
 
             _enemyType = Data.NameOrType;
             _isAttacker = Data.IsAttacker;
+            
+            _nextAttackTime = 0f;
         }
 
         public virtual void Deactivate()

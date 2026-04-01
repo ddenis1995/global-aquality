@@ -7,26 +7,8 @@
     <list default="true" id="85de56ad-3930-4857-b791-a70549cb1ca5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Global Aquality/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Global Aquality/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Enemies/Deepling.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Enemies/Deepling.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Enemies/EnemyVariant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Enemies/EnemyVariant.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Prefabs/Enemies/Murloc.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Prefabs/Enemies/Murloc.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/DepricatedEnemy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/DepricatedEnemy.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Characters/Enemies/Enemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/DepricatedMyPool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/DepricatedMyPool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/DepricatedSpawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/DepricatedSpawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/EnemyManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/EnemyManager.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/WaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Managers/WaveManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/PoolableItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Levels/Waves/Wave1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Levels/Waves/Wave1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Levels/Waves/Wave2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scripts/Resources/Levels/Waves/Wave2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/TestEnemyPooling.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/TestEnemyPooling/EnemyPool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Project/Scripts/TestEnemyPooling/EnemyPool.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,6 +150,7 @@
       <workItem from="1774596185720" duration="10993000" />
       <workItem from="1774854901006" duration="2455000" />
       <workItem from="1774940040769" duration="9506000" />
+      <workItem from="1775029399628" duration="5733000" />
     </task>
     <servers />
   </component>
